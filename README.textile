@@ -1,2 +1,19 @@
 Ring Tightening Mantra
 
+A.K.A. Jenkins Sonar Report Checker
+
+项目叫“紧箍咒”（Ring Tightening Mantra，https://github.com/mingjin/mantra/），是做一个Jenkins插件。
+
+背景
+CI会产生大量的量化指标（如静态质量检查、测试覆盖率等）。通过同比上次构建的数值，就可以得知系统的质量是提升，还是降低。因此，在给客户做咨询的时候，为了督促他们不断提升软件质量，我们都会给他们开发一段小程序“紧箍咒”（Ruby或者Ant Task），然后加到构建流水线上。每次构建执行完静态质量检查之后，同比构建的结果值。如果比上次质量上升，则构建通过，否则构建失败。
+
+诉求
+做一个Jenkins插件，可以配置成每个Job的post action。它会依赖于Sonar的Jenkins插件，然后解析Sonar的结果页面，将每次的构建质量结果都保存下来，再对比上次的结果，如果质量下降，就将该Job的构建置为失败。
+
+目标
+第一个版本就只针对Java，针对Sonar的default profile所检查出来的结果进行比对
+该插件能出现在Job的post action列表里面，不需要提供配置界面
+该插件能完成“紧箍咒”的功能
+
+亮点
+Jenkins插件、Sonar、数据解析、“紧箍咒”
