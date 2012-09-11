@@ -2,3 +2,7 @@ target
 .classpath
 .project
 .settings
+.idea/
+*.iml
+work/
+deploy.sh
